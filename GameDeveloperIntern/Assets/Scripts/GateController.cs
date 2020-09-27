@@ -18,6 +18,11 @@ public class GateController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+
+        if (other.tag == "cylinder_hit_point")
+        {
+            other.gameObject.GetComponent<MeshCollider>().enabled = false;
+        }
         amountOfCylinderPiece += 1;
         if (amountOfCylinderPiece > 9)
         {
