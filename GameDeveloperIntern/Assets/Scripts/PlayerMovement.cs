@@ -28,7 +28,9 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.touchCount > 0)
         {
-            GameController.instance.startGame();
+            if(gameController.GetComponent<GameController>().isStop){
+                gameController.GetComponent<GameController>().startGame();
+            }
             Touch touch = Input.GetTouch(0);
             xMove = 0;
             if (touch.position.x > Screen.width / 2) {

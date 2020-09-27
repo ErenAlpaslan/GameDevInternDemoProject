@@ -9,6 +9,7 @@ TagManager:
   - cylinder_hit_point
   - main_surface
   - game_controller
+  - point_text
   layers:
   - Default
   - TransparentFX

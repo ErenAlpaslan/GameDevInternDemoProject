@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class Player : MonoBehaviour
 {
-    
+    private int playerPoint = 0;
     public GameObject PlaneSlicer;
     public GameObject sawdustParticleSystem;
 
@@ -16,10 +18,14 @@ public class Player : MonoBehaviour
     public AudioClip unsuccessfulCutAudioClip;
 
     private AudioSource audioSource;
+
+    public TextMeshProUGUI pointText;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        pointText.SetText(playerPoint+"");
     }
 
     // Update is called once per frame
@@ -59,6 +65,8 @@ public class Player : MonoBehaviour
         ScreenShakeController.ShakeOnce(amount: new Vector3(0.5f, 0.5f, 0));
         yield return new WaitForSecondsRealtime(0.1f);
         PlaneSlicer.GetComponent<SlicerPlane>().slice(parent);
+        playerPoint += 1;
+        pointText.SetText(playerPoint+"");
         audioSource.clip = successfulCutAudioClip;
         audioSource.Play();
         this.GetComponent<PlayerMovement>().playerMovementSpeed = speed;

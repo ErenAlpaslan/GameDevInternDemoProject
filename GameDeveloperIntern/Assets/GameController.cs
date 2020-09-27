@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
     public GameObject startUi;
+    public GameObject progressUi;
 
     public bool isStop = true;
 
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
         if (isStop)
         {
             startUi.SetActive(false);
+            progressUi.SetActive(true);
             Time.timeScale = 1;
             isStop = false;
             StartCoroutine(CylinderSpawner.instance.spawnCylinder());
